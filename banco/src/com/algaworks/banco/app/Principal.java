@@ -1,3 +1,8 @@
+package com.algaworks.banco.app;
+
+import com.algaworks.banco.modelo.Conta;
+import com.algaworks.banco.modelo.Pessoa;
+
 public class Principal {
 
   public static void main(String[] args) {
@@ -15,7 +20,7 @@ public class Principal {
 //    minhaConta.numero = 67890;
 //    minhaConta.saldo = 15_000;
 
-//    Conta suaConta = new Conta(null, 23456, 78901);
+//    com.algaworks.banco.modelo.Conta suaConta = new com.algaworks.banco.modelo.Conta(null, 23456, 78901);
     Conta suaConta = new Conta(titular2, 23456, 78901);
 //    suaConta.setTitular(titular2);
 //    suaConta.setAgencia(23456);
