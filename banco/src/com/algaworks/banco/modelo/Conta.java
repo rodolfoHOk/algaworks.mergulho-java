@@ -31,7 +31,7 @@ public class Conta {
     if (valor <= 0) {
       throw new IllegalArgumentException("Valor deve ser maior que 0");
     }
-    if (saldo - valor < 0) {
+    if (getSaldoDisponivel() - valor < 0) {
       throw new IllegalStateException("Saldo insuficiente");
     }
     saldo -= valor;
@@ -45,28 +45,20 @@ public class Conta {
     return titular;
   }
 
-//  public void setTitular(com.algaworks.banco.modelo.Pessoa titular) {
-//    this.titular = titular;
-//  }
-
   public int getAgencia() {
     return agencia;
   }
-
-//  public void setAgencia(int agencia) {
-//    this.agencia = agencia;
-//  }
 
   public int getNumero() {
     return numero;
   }
 
-//  public void setNumero(int numero) {
-//    this.numero = numero;
-//  }
-
   public double getSaldo() {
     return saldo;
+  }
+
+  public double getSaldoDisponivel() {
+    return getSaldo();
   }
 
 }
