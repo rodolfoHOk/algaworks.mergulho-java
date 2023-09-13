@@ -23,19 +23,21 @@ public class Principal {
     ContaEspecial suaConta = new ContaEspecial(titular2, 23456, 78901, 1_000);
 
     Conta conta = minhaConta; // Upcasting
-//  Conta conta = (Conta) minhaConta; // Upcasting
-//  Conta minhaConta = new ContaInvestimento(titular1, 12345, 67890); // Upcasting
-//  conta.creditarRendimento(0.8); // não tem mais acesso
     conta.depositar(1_000);
+    conta.debitarTarifaMensal();
+
+//  Conta novaConta = new Conta(titular1, 12345, 67890); // não permitido em classes abstratas
 
     minhaConta.depositar(15_000);
     minhaConta.sacar(1_000);
     minhaConta.sacar(1_000, 10);
-    minhaConta.creditarRendimento(0.8); // não tem acesso no Upcasting Conta minhaConta = new ContaInvestimento(titular1, 12345, 67890);
+    minhaConta.creditarRendimento(0.8);
+    minhaConta.debitarTarifaMensal();
 
     suaConta.depositar(15_000);
     suaConta.sacar(15_000);
     suaConta.sacar(500, 1);
+    suaConta.debitarTarifaMensal();
 
     caixaEletronico.imprimirSaldo(minhaConta);
     System.out.println();

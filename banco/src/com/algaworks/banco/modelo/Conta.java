@@ -2,7 +2,8 @@ package com.algaworks.banco.modelo;
 
 import java.util.Objects;
 
-public class Conta {
+// conta abstrata não permite que seja instânciada
+public abstract class Conta {
 
   private Pessoa titular;
   private int agencia;
@@ -36,6 +37,8 @@ public class Conta {
     }
     saldo -= valor;
   }
+
+  public abstract void debitarTarifaMensal();
 
   public void sacar(double valor, double taxaDeSaque) {
     sacar(valor + taxaDeSaque);
