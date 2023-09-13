@@ -2,15 +2,15 @@ package com.algaworks.banco.modelo;
 
 import com.algaworks.banco.excecao.SaldoInsuficienteException;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
-// conta abstrata não permite que seja instânciada
 public abstract class Conta {
 
   private Pessoa titular;
   private int agencia;
   private int numero;
-  private double saldo;
+  private BigDecimal saldo = BigDecimal.ZERO;
 
   Conta() {
   }
@@ -23,27 +23,27 @@ public abstract class Conta {
     this.numero = numero;
   }
 
-  public void depositar(double valor) {
-    if (valor <= 0) {
+  public void depositar(BigDecimal valor) {
+    if (valor.compareTo(BigDecimal.ZERO) <= 0) {
       throw new IllegalArgumentException("Valor deve ser maior que 0");
     }
-    saldo += valor;
+    saldo = saldo.add(valor);
   }
 
-  public void sacar(double valor) {
-    if (valor <= 0) {
+  public void sacar(BigDecimal valor) {
+    if (valor.compareTo(BigDecimal.ZERO) <= 0) {
       throw new IllegalArgumentException("Valor deve ser maior que 0");
     }
-    if (getSaldoDisponivel() - valor < 0) {
+    if (getSaldoDisponivel().subtract(valor).compareTo(BigDecimal.ZERO) < 0) {
       throw new SaldoInsuficienteException("Saldo insuficiente");
     }
-    saldo -= valor;
+    saldo = saldo.subtract(valor);
   }
 
   public abstract void debitarTarifaMensal();
 
-  public void sacar(double valor, double taxaDeSaque) {
-    sacar(valor + taxaDeSaque);
+  public void sacar(BigDecimal valor, BigDecimal taxaDeSaque) {
+    sacar(valor.add(taxaDeSaque));
   }
 
   public Pessoa getTitular() {
@@ -58,11 +58,11 @@ public abstract class Conta {
     return numero;
   }
 
-  public double getSaldo() {
+  public BigDecimal getSaldo() {
     return saldo;
   }
 
-  public double getSaldoDisponivel() {
+  public BigDecimal getSaldoDisponivel() {
     return getSaldo();
   }
 
