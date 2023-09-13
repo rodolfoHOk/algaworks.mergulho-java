@@ -1,5 +1,7 @@
 package com.algaworks.banco.modelo;
 
+import com.algaworks.banco.excecao.SaldoInsuficienteException;
+
 import java.util.Objects;
 
 // conta abstrata não permite que seja instânciada
@@ -33,7 +35,7 @@ public abstract class Conta {
       throw new IllegalArgumentException("Valor deve ser maior que 0");
     }
     if (getSaldoDisponivel() - valor < 0) {
-      throw new IllegalStateException("Saldo insuficiente");
+      throw new SaldoInsuficienteException("Saldo insuficiente");
     }
     saldo -= valor;
   }
