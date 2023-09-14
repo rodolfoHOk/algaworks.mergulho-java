@@ -3,6 +3,7 @@ package com.algaworks.banco.modelo;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Banco {
 
@@ -32,6 +33,31 @@ public class Banco {
 
   public List<Conta> getContas() {
     return contas;
+  }
+
+  public Conta buscarOld(int agencia, int numeroConta) {
+    for (Conta conta: getContas()) {
+      if (conta.getAgencia() == agencia && conta.getNumero() == numeroConta) {
+        return conta;
+      }
+    }
+    return null;
+  }
+
+  public Optional<Conta> buscarStream(int agencia, int numeroConta) {
+    List<Conta> encontrados = getContas().stream()
+      .filter(conta -> conta.getAgencia() == agencia && conta.getNumero() == numeroConta)
+      .toList();
+    return !encontrados.isEmpty() ? Optional.of(encontrados.get(0)) : Optional.empty();
+  }
+
+  public Optional<Conta> buscar(int agencia, int numeroConta) {
+    for (Conta conta: getContas()) {
+      if (conta.getAgencia() == agencia && conta.getNumero() == numeroConta) {
+        return Optional.of(conta);
+      }
+    }
+    return Optional.empty();
   }
 
 }
