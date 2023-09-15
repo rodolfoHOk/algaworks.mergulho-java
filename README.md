@@ -41,6 +41,25 @@
 - Optional
 - Rest API com Spring
 
-### Dia 4
+### Especialista Java
 
-- ?
+- +550 vídeo aulas
+- 89 horas de aulas gravadas
+- 280 horas de carga horária
+- Fundamentos sólidos do Java
+- Java 17
+- Orientação a Objetos
+- Diagramas de Classes da UML
+- Produtividade com Intellij IDEA
+- Operações com números e datas
+- Arrays e Collections Framework
+- Expressões Lambda e Streams API
+- Java Code Conventions
+- Clean Code
+- Effective Java - Técnicas e boas práticas
+- Exceptions
+- Arquivos JAR e Apache Maven
+- Logging com Logback e SLF4J
+- API de I/O e NIO.2
+- Bancos de Dados e JDBC
+- Generics, anotações e Reflection API
